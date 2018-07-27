@@ -19,10 +19,15 @@ namespace gengine { namespace graphics {
     public:
         Window(const char* title, int width, int height);
         ~Window();
-        void update() const;
+        void clear() const;
+        void update();
         bool closed() const;
+        inline int getWidth() const { return m_Width; }
+        inline int getHeight() const { return m_Height; }
+
     private:
         bool init();
+
 
     };
 
