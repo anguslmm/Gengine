@@ -9,10 +9,15 @@ namespace gengine {
     namespace graphics {
 
         void windowResize(GLFWwindow* window, int width, int height);
+
         Window::Window(const char *title, int width, int height)
                 : m_Title(title), m_Width(width), m_Height(height) {
             if (!init())
                 glfwTerminate();
+            for (int i=0; i<MAX_KEYS; i++)
+            {
+                m_Keys[i] = false;
+            }
         }
 
         Window::~Window() = default;
@@ -25,12 +30,22 @@ namespace gengine {
                 m_Window = glfwCreateWindow(m_Width, m_Height, m_Title, nullptr, nullptr);
                 if (!m_Window) {
                     glfwTerminate();
-                    std::cout << "Failed to create GLFW Window" << std::endl;
+                    std::cout << "Failed to create GLFW graphics" << std::endl;
                     return false;
                 }
                 glfwMakeContextCurrent(m_Window);
                 glfwSetWindowSizeCallback(m_Window, windowResize);
             }
+
+            if (glewInit() != GLEW_OK)
+            {
+                std::cout << "Could not initialize GLEW." << std::endl;
+                return false;
+            }
+
+            std::cout << glGetString(GL_VERSION) << std::endl;
+            glfwSetWindowUserPointer(m_Window, this);
+            glfwSetKeyCallback(m_Window, keyCallback);
             return true;
         }
 
@@ -51,6 +66,21 @@ namespace gengine {
 
         void windowResize(GLFWwindow *window, int width, int height) {
             glViewport(0, 0, width, height);
+        }
+
+        void keyCallback(GLFWwindow* gwindow, int key, int scancode, int action, int mods) {
+            auto window = (Window*)glfwGetWindowUserPointer(gwindow);
+            window->setKey(key, action != GLFW_RELEASE);
+        }
+
+        bool Window::isKeyPressed(int keycode) {
+            if (keycode >= MAX_KEYS)
+                return false;
+            return m_Keys[keycode];
+        }
+
+        void Window::setKey(int key, bool isPressed) {
+            m_Keys[key] = isPressed;
         }
     }
 }

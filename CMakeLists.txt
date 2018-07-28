@@ -12,7 +12,7 @@ set(APP_TARGET Gengine-Demo)
 set(OpenGL_GL_PREFERENCE GLVND)
 
 include_directories(${PROJECT_SOURCE_DIR})
-add_executable(${APP_TARGET} main.cpp src/Window/window.cpp src/Window/window.h)
+add_executable(${APP_TARGET} main.cpp src/graphics/window.cpp src/graphics/window.h)
 
 # glfw
 find_package(glfw3 REQUIRED)
