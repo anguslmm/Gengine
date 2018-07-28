@@ -1,6 +1,7 @@
 //#include <GL/glew.h>
 //#include <GLFW/glfw3.h>
-#include <src/graphics/window.h>
+#include "src/graphics/window.h"
+#include "src/math/math.h"
 #include <iostream>
 
 

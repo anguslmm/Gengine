@@ -13,8 +13,10 @@
 
 namespace gengine { namespace graphics {
 
-    class Window;
     static void keyCallback(GLFWwindow* gwindow, int key, int scancode, int action, int mods);
+    static void mouseButtonCallback(GLFWwindow* gwindow, int button, int action, int mods);
+    static void mousePositionCallback(GLFWwindow* gwindow, double xpos, double ypos);
+
     class Window
     {
     private:
@@ -35,7 +37,10 @@ namespace gengine { namespace graphics {
         inline int getHeight() const { return m_Height; }
 
         void setKey(int key, bool isPressed);
+        void setMouseButton(int button, bool isPressed);
+        void setMousePosition(double x, double y);
         bool isKeyPressed(int keycode);
+        bool isMouseButtonPressed(int button);
     private:
         bool init();
     };
