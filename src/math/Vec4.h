@@ -12,8 +12,6 @@ namespace gengine {
         struct Vec4 {
             float x, y, z, w;
 
-            Vec4();
-
             Vec4(float x, float y, float z, float w);
 
             Vec4(const Vec4 &other);

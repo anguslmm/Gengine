@@ -6,16 +6,21 @@
 #define GENGINE_MAT4_H
 
 #include "Vec3.h"
+#include "Vec4.h"
 #include <math.h>
 
 namespace gengine {
     namespace math {
         struct Mat4
         {
-            float elements[4 * 4];
+            union {
+                float elements[4 * 4];
+                Vec4 columns[4];
+            };
 
             Mat4();
-            explicit Mat4(float diagonal);
+            Mat4(float diagonal);
+            Mat4(const Mat4& original);
 
             Mat4& multiply(const Mat4& other);
             friend Mat4 operator*(Mat4 left, const Mat4& right);

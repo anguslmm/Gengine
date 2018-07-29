@@ -19,6 +19,12 @@ namespace gengine {
             }
         }
 
+        Mat4::Mat4(const Mat4 &original) {
+            for (int i = 0; i < 4 * 4; i++) {
+                elements[i] = original.elements[i];
+            }
+        }
+
         Mat4::Mat4(float diagonal) {
             for (int i=0; i < 4 * 4; i++)
             {
