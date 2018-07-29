@@ -3,7 +3,7 @@
 //
 
 #include <iostream>
-#include "window.h"
+#include "Window.h"
 
 namespace gengine {
     namespace graphics {

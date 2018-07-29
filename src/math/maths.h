@@ -5,8 +5,11 @@
 #ifndef GENGINE_MATH_H
 #define GENGINE_MATH_H
 
-#include "vec2.h"
-#include "vec3.h"
-#include "vec4.h"
+#include <math.h>
+#include "Vec2.h"
+#include "Vec3.h"
+#include "Vec4.h"
+#include "Mat4.h"
+
 
 #endif //GENGINE_MATH_H
