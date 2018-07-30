@@ -32,7 +32,7 @@ namespace gengine {
 
             static Mat4 translation(const Vec3& trans);
             static Mat4 scale(const Vec3& scale);
-            static Mat4 rotation(float angle, Vec3& axis);
+            static Mat4 rotation(float angle, const Vec3& axis);
 
         };
     }

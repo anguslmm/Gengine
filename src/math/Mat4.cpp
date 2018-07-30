@@ -104,7 +104,7 @@ namespace gengine {
             return result;
         }
 
-        Mat4 Mat4::rotation(float angle, Vec3 &axis) {
+        Mat4 Mat4::rotation(float angle, const Vec3 &axis) {
             Mat4 result(1.0f);
             float r = toRadians(angle);
             float c = cos(r);
